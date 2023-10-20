@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a71aa50b7a9547409ed825a02159261, type: 3}
+  m_Name: MyStats
+  m_EditorClassIdentifier: 
+  session_start_time: yyyy/MM/dd hh:mm:ss tt
+  attempt_start_time: yyyy/MM/dd hh:mm:ss tt
+  attempt_end_time: yyyy/MM/dd hh:mm:ss tt
+  expected_duration_in_seconds: 30
+  actual_duration_in_seconds: 40
+  level: 1
+  attempt_type: Open
+  total_sustained: 20
+  non_sustained: 20
+  impulsivity_score: 1
+  response_time: 20
+  omission_score: 0
+  distractibility_score: 16
+  actual_attention_time: 20

@@ -1,0 +1,655 @@
+fileFormatVersion: 2
+guid: f7d09e5a6fbf1ad41bb1d839225032aa
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1221914665144331213
+    second: viblio atlas ui_0
+  - first:
+      213: 6456643739072620789
+    second: viblio atlas ui_1
+  - first:
+      213: -2226894262129440458
+    second: viblio atlas ui_2
+  - first:
+      213: -1187492552309144566
+    second: viblio atlas ui_3
+  - first:
+      213: -2235183777420618184
+    second: viblio atlas ui_4
+  - first:
+      213: -9062839518127086256
+    second: viblio atlas ui_5
+  - first:
+      213: -7943075449808029413
+    second: viblio atlas ui_6
+  - first:
+      213: 7891923467680970811
+    second: viblio atlas ui_7
+  - first:
+      213: -5409835438979435596
+    second: viblio atlas ui_8
+  - first:
+      213: 2528234438345782626
+    second: viblio atlas ui_9
+  - first:
+      213: -3792904704367120010
+    second: viblio atlas ui_10
+  - first:
+      213: -2958666049757465514
+    second: viblio atlas ui_11
+  - first:
+      213: 2108779342285307633
+    second: viblio atlas ui_12
+  - first:
+      213: 4325787850150204181
+    second: viblio atlas ui_13
+  - first:
+      213: 590548101938960615
+    second: viblio atlas ui_14
+  - first:
+      213: -5783649905670807399
+    second: viblio atlas ui_15
+  - first:
+      213: -1237285448995317655
+    second: viblio atlas ui_16
+  - first:
+      213: 5534913018543008106
+    second: viblio atlas ui_17
+  - first:
+      213: 6385476034803444056
+    second: viblio atlas ui_18
+  - first:
+      213: 5423914744059847532
+    second: viblio atlas ui_19
+  - first:
+      213: 2240190496068964171
+    second: viblio atlas ui_20
+  - first:
+      213: 7015961250286589371
+    second: viblio atlas ui_21
+  - first:
+      213: 2645359990607901428
+    second: viblio atlas ui_22
+  - first:
+      213: 8857841840904427820
+    second: viblio atlas ui_23
+  - first:
+      213: 9189253836378067148
+    second: viblio atlas ui_24
+  - first:
+      213: 1193679668867313635
+    second: viblio atlas ui_25
+  - first:
+      213: -6260963792555794767
+    second: viblio atlas ui_26
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: viblio atlas ui_0
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 924
+        width: 407
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a53df374ec36a6644bf8c6e12675407e
+      internalID: -1221914665144331213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: viblio atlas ui_1
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 916
+        width: 410
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b6407a1dd05fb94eb359477b7bd3896
+      internalID: 6456643739072620789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: viblio atlas ui_7
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 756
+        width: 407
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3ced793c21b5a443a1f3962ca5f3d2a
+      internalID: 7891923467680970811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: viblio atlas ui_12
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 600
+        width: 407
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f441cbff1b4a9744a8e9858890bd556
+      internalID: 2108779342285307633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: viblio atlas ui_13
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 661
+        width: 410
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f52e10a08a7a99342aedba90b909c3d7
+      internalID: 4325787850150204181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: viblio atlas ui_14
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 456
+        width: 136
+        height: 89
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f251b823a9a9af944b25778fb9387733
+      internalID: 590548101938960615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: viblio atlas ui_15
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 452
+        width: 134
+        height: 89
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28034ecb01248a8408328d4bde9bf846
+      internalID: -5783649905670807399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: viblio atlas ui_16
+      rect:
+        serializedVersion: 2
+        x: 943
+        y: 452
+        width: 134
+        height: 89
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f30e72c991d0fd4083b34aa4c8b567a
+      internalID: -1237285448995317655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: viblio atlas ui_17
+      rect:
+        serializedVersion: 2
+        x: 1156
+        y: 522
+        width: 266
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc0bd8e3d58a5e64094884e4a486b0b8
+      internalID: 5534913018543008106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: viblio atlas ui_18
+      rect:
+        serializedVersion: 2
+        x: 1549
+        y: 522
+        width: 267
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fac58cef0da71b41b7c53e7fecc1178
+      internalID: 6385476034803444056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: viblio atlas ui_19
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 384
+        width: 407
+        height: 100
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5460fc24c1c01284197d84dbaae12216
+      internalID: 5423914744059847532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: viblio atlas ui_20
+      rect:
+        serializedVersion: 2
+        x: 584
+        y: 233
+        width: 227
+        height: 152
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 663b17c5951117e429af427fea009dbf
+      internalID: 2240190496068964171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: viblio atlas ui_21
+      rect:
+        serializedVersion: 2
+        x: 1156
+        y: 366
+        width: 266
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fce8c2c6f45ff54f96cb1974163cf18
+      internalID: 7015961250286589371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: viblio atlas ui_22
+      rect:
+        serializedVersion: 2
+        x: 1549
+        y: 366
+        width: 267
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd46ac2bd56322541873cbcdb43f3574
+      internalID: 2645359990607901428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: viblio atlas ui_23
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 160
+        width: 406
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ccee8664eb0dc2408aaaac04f87c548
+      internalID: 8857841840904427820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: viblio atlas ui_24
+      rect:
+        serializedVersion: 2
+        x: 872
+        y: 224
+        width: 228
+        height: 153
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09be6ad6e85c8ba42a320f98663a0e34
+      internalID: 9189253836378067148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: viblio atlas ui_25
+      rect:
+        serializedVersion: 2
+        x: 1156
+        y: 210
+        width: 266
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4658ea1cfe0f9e5428473434a75a1e08
+      internalID: 1193679668867313635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: viblio atlas ui_26
+      rect:
+        serializedVersion: 2
+        x: 1549
+        y: 210
+        width: 267
+        height: 121
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0a4f2a42cb2816499de99fa64464ae5
+      internalID: -6260963792555794767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: viblio atlas ui_2
+      rect:
+        serializedVersion: 2
+        x: 1173
+        y: 959
+        width: 213
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34c6f9918c974e24496ba31603bce5bb
+      internalID: -2226894262129440458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: viblio atlas ui_3
+      rect:
+        serializedVersion: 2
+        x: 1522
+        y: 961
+        width: 319
+        height: 49
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b6968896512bcd449e2c99a6df639c8
+      internalID: -1187492552309144566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: viblio atlas ui_4
+      rect:
+        serializedVersion: 2
+        x: 1115
+        y: 782
+        width: 329
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28946a2815a8d4b42b6eeef29a37726b
+      internalID: -2235183777420618184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: viblio atlas ui_5
+      rect:
+        serializedVersion: 2
+        x: 1653
+        y: 766
+        width: 188
+        height: 52
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b81516b24abbab84583dd3554ec8e906
+      internalID: -9062839518127086256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: fa20adc758b391f4aaff0888942f5d02
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

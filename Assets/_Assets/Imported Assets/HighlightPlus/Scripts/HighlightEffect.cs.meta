@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 888380afc233049ce9e618f9f36c8ba8
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - profile: {fileID: 11400000, guid: 616dd6057e0264346abe776a27a34107, type: 2}
+  - targetFXTexture: {instanceID: 0}
+  - targetFXCenter: {instanceID: 0}
+  - target: {instanceID: 0}
+  executionOrder: 900
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
