@@ -31,8 +31,10 @@ public class RobotDistractingTask : MonoBehaviour
     }
     IEnumerator WaitAndBeginDistractingIenum()
     {
+        yield return new WaitForSeconds(.2f);
+        robotSound.StopSound();
         robot.Open();
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(4.8f);
         RobotAnimationPositions.transform.GetChild(0).localPosition = new Vector3(1.011f, 0, 0.582f);
         RobotAnimationPositions.transform.GetChild(0).localRotation = Quaternion.identity;
         robot.SetLevelIntroPosition(RobotAnimationPositions.transform.GetChild(0));
@@ -79,6 +81,7 @@ public class RobotDistractingTask : MonoBehaviour
     public void CompleteDistractingTask()
     {
         StopCoroutine(CompleteDistractingTaskIenum());
+        StopCoroutine(BeginRobotDistractingIenum());
         StartCoroutine(CompleteDistractingTaskIenum());
     }
 

@@ -39,7 +39,7 @@ public class DistractorManager : MonoBehaviour
     public async void AdaptiveAttention()
     {
         int rand = RandomNember();
-        Debug.Log("AdaptiveAttention");
+        Debug.Log("AdaptiveAttention"+rand);
         await new WaitForSeconds(20);
         if (rand == 1) onShelfFallenDistracting.Raise();
         else if (rand == 2) OnRobotDistracting.Raise();

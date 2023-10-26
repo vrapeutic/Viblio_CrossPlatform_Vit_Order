@@ -48,16 +48,19 @@ public class Books : MonoBehaviour
         //}
         MakeBooksUnInteractableOnlevelEnd();
     }
-
-    private async void MakeBooksUnInteractableOnlevelEnd()
+    public void MakeBooksUnInteractableAfterperiod()
     {
-/**/ //        OVRGrabber[] grabbers = FindObjectsOfType<OVRGrabber>();
+        StartCoroutine(MakeBooksUnInteractableAfterperiodIenum());
+    }
 
-        /**/ //        foreach (OVRGrabber item in grabbers)
-             /**/ //        {
-                  /**/ //       item.ForceRelease();
-                    /**/ //   }
+    IEnumerator MakeBooksUnInteractableAfterperiodIenum()
+    {
+        yield return new WaitForSeconds(.3f);
+        MakeBooksUnInteractableOnlevelEnd();
+    }
 
+     void MakeBooksUnInteractableOnlevelEnd()
+    {
         if (Statistics.instance.android)
         {
             //await new WaitForSeconds(2f);
