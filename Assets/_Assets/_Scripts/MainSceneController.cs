@@ -7,8 +7,7 @@ public class MainSceneController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(Statistics.instance.android)
-            FindObjectOfType<Robot>().Open();
-        Statistics.instance.OnStart();
+        FindObjectOfType<Robot>().Open();
+        //Statistics.instance.OnStart();
     }
 }

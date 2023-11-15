@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1864937a0c6a25a44b1362d33c4fd20c, type: 3}
-  m_Name: OnCompleteVisitorsGreeting
+  m_Name: OnCompleteVisitorsWaving
   m_EditorClassIdentifier: 

@@ -22356,6 +22356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typeOfAttention: {fileID: 11400000, guid: 0c3194d968ae0a049af44be382ec0408, type: 2}
+  noOfDistractors: {fileID: 11400000, guid: 0f757bc747daece4390616687b63ff62, type: 2}
   onLibraryAnnoncementDistractor: {fileID: 11400000, guid: 533570bfba97b2e4cac4778e0e41b93e,
     type: 2}
   onVisitorsTalking: {fileID: 11400000, guid: d7506c349dc942b43b5f7c565699ffe6, type: 2}

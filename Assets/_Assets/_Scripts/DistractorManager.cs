@@ -7,13 +7,14 @@ using UnityEngine;
 public class DistractorManager : MonoBehaviour
 {
     [SerializeField] StringVariable typeOfAttention;
+    [SerializeField] IntVariable noOfDistractors;
     //selective attention 
     [SerializeField] GameEvent onLibraryAnnoncementDistractor;
     [SerializeField] GameEvent onVisitorsTalking;
     [SerializeField] GameEvent onDoorDistractor;
     //adaptive attention
-    [SerializeField] GameEvent onShelfFallenDistracting;
     [SerializeField] GameEvent OnRobotDistracting;
+    [SerializeField] GameEvent onShelfFallenDistracting;
     [SerializeField] GameEvent onVisitorsGreeting;
 
     // Start is called before the first frame update
@@ -41,13 +42,14 @@ public class DistractorManager : MonoBehaviour
         int rand = RandomNember();
         Debug.Log("AdaptiveAttention"+rand);
         await new WaitForSeconds(20);
-        if (rand == 1) onShelfFallenDistracting.Raise();
-        else if (rand == 2) OnRobotDistracting.Raise();
+        if (rand == 1) OnRobotDistracting.Raise(); 
+        else if (rand == 2) onShelfFallenDistracting.Raise();
         else if (rand == 3) onVisitorsGreeting.Raise();
     }
 
     int RandomNember()
     {
-        return Random.Range(1, 4);
+        int maxRange=noOfDistractors.Value+1;
+        return Random.Range(1, maxRange);
     }
 }
