@@ -16,6 +16,7 @@ public class BookTag : MonoBehaviour
         //**//
         gameObject.tag = "Book";
         //StartCoroutine(ResetBookTag());
+        gameObject.GetComponent<DeskTopGrapable>().BookReleased();
     }
 
     public void OnGrabEndFunc()//on last hover Exit
@@ -25,6 +26,7 @@ public class BookTag : MonoBehaviour
             //GetComponent<Rigidbody>().isKinematic = false;
             //GetComponent<Rigidbody>().useGravity = true;
             if (gameObject.tag == "GrabbedBook") gameObject.tag = "Book";
+            gameObject.GetComponent<DeskTopGrapable>().BookReleased();
             //Debug.Log("OnGrabEndFunc");
         }
     }
@@ -36,6 +38,7 @@ public class BookTag : MonoBehaviour
         gameObject.tag = "GrabbedBook";
         //Debug.Log("OnGrabBeginFunc");
         StartCoroutine(CanEndGrapIEnum());
+        gameObject.GetComponent<DeskTopGrapable>().BookGraped();
     }
 
     IEnumerator CanEndGrapIEnum()

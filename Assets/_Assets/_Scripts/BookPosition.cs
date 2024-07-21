@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Tachyon;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 public class BookPosition : MonoBehaviour
@@ -29,6 +30,8 @@ public class BookPosition : MonoBehaviour
         a5PartSeconds = new WaitForSeconds(.5f);
         a2PartSeconds = new WaitForSeconds(.2f);
         a3PartSeconds = new WaitForSeconds(.3f);
+        InvokationManager invokationManager = new InvokationManager(this, this.gameObject.name);
+        NetworkManager.InvokeClientMethod("ControlRewardsRPC", invokationManager);
         speaker = FindObjectOfType<NPCSoundController>();
         OnStart();
     }
@@ -43,10 +46,10 @@ public class BookPosition : MonoBehaviour
         else
         {
             ControlIndictors(2, false);
-            //for (int i = 3; i < 7; i++)
-            //{
-            //    transform.GetChild(i).transform.gameObject.SetActive(false);
-            //}
+            for (int i = 3; i < 7; i++)
+            {
+                transform.GetChild(i).transform.gameObject.SetActive(false);
+            }
         }
         if (!Statistics.instance.android) return;
 
@@ -149,7 +152,7 @@ public class BookPosition : MonoBehaviour
             if (i == target) transform.GetChild(i).transform.gameObject.SetActive(true);
             else transform.GetChild(i).transform.gameObject.SetActive(false);
         }
-        if (server) ControlRewardsRPC(target,Statistics.instance.correctPutBooksNo,Random.Range(0,2));
+        if (server) NetworkManager.InvokeServerMethod("ControlRewardsRPC", this.gameObject.name, target,Statistics.instance.correctPutBooksNo,Random.Range(0,2));
         lastTarget = target;
     }
     public void ControlRewardsRPC(int target, int booksNo, int clipNo)

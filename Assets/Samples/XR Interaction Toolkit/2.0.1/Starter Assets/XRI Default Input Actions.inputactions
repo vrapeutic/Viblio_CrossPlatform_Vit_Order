@@ -1076,12 +1076,12 @@
         },
         {
             "name": "Buttons",
-            "id": "da3d0e68-f926-47f3-bdb2-ea4801257794",
+            "id": "d583556b-a31e-4d98-bfe9-a3d46bfcce37",
             "actions": [
                 {
                     "name": "BButton",
                     "type": "Button",
-                    "id": "cd744f5a-5698-43f9-b5e2-e8f0aba8597e",
+                    "id": "87adc554-4a57-4af6-b46a-4f1a36de7c7b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -1090,7 +1090,7 @@
                 {
                     "name": "YButton",
                     "type": "Button",
-                    "id": "3c980706-e7a2-469c-a25a-50333b2575ea",
+                    "id": "4fff9c1d-ccb6-4a18-ad61-ccfb1ef836b7",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -1100,7 +1100,7 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "786f0b0a-9e0e-4058-92f7-466ccd009eb8",
+                    "id": "57bbdac9-30e9-4fe6-8ea0-6ef6c8f096a2",
                     "path": "<XRController>{RightHand}/secondaryButton",
                     "interactions": "",
                     "processors": "",
@@ -1111,7 +1111,7 @@
                 },
                 {
                     "name": "",
-                    "id": "8cb699d5-cef6-4f49-bfb4-3a4e6a2ee260",
+                    "id": "14d26d46-6011-47c5-99fa-4ac4b7b467c6",
                     "path": "<XRController>{LeftHand}/secondaryButton",
                     "interactions": "",
                     "processors": "",

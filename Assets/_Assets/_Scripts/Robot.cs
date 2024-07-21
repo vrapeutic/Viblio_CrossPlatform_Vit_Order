@@ -8,15 +8,16 @@ public class Robot : MonoBehaviour
     Transform robotHomeBattery;
     Transform levelIntroIntialPosition;
     AudioSource robotSound;
-
-
+    // Start is called before the first frame update
     private void OnEnable()
     {
-        transform.position = new Vector3(1,0, 0.582f);
-        transform.rotation = new Quaternion(0.0f,.7f,0.0f,-.7f);
         robotAnim = GetComponent<Animator>();
         robotSound= GetComponent<AudioSource>();
     }
+    void Start()
+    {
+    }
+
     #region animation states
     public void Walk()
     {

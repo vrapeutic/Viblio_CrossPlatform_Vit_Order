@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Tachyon;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,11 +9,12 @@ public class ShowTimer : MonoBehaviour
     WaitForSeconds asecound;
     bool canCount = true;
 
-    public object NetworkManager { get; private set; }
-
     // Start is called before the first frame update
     void Start()
     {
+        InvokationManager invokationManager = new InvokationManager(this, this.gameObject.name);
+        NetworkManager.InvokeClientMethod("ActivateTimerRPC", invokationManager);
+        NetworkManager.InvokeClientMethod("DeActivateTimerRPC", invokationManager);
         asecound = new WaitForSeconds(1);
         GetComponentInChildren<Text>().text = Statistics.instance.closedTimeValue.ToString();
     }
@@ -41,6 +43,12 @@ public class ShowTimer : MonoBehaviour
 
     public void ActivateTimer()
     {
+        NetworkManager.InvokeServerMethod("ActivateTimerRPC", this.gameObject.name);
+    }
+
+    public void ActivateTimerRPC()
+    {
+        //Debug.Log("ActivateTimerRPC");
         CounterDown();
     }
 
@@ -63,7 +71,11 @@ public class ShowTimer : MonoBehaviour
 
     void DeActivateTimer()
     {
-        canCount = false;
+        NetworkManager.InvokeServerMethod("DeActivateTimerRPC", this.gameObject.name);
     }
 
+    public void DeActivateTimerRPC()
+    {
+        canCount = false;
+    }
 }

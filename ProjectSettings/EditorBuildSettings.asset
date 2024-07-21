@@ -12,8 +12,20 @@ EditorBuildSettings:
     path: Assets/_Assets/__scenes/Main.unity
     guid: 1a5ea3e00191d2d448d2b2f371048ea3
   - enabled: 1
-    path: Assets/_Assets/__scenes/Game.unity
-    guid: 44e0f92185edecf42929a80eb527a45d
+    path: Assets/_Assets/__scenes/Level1.unity
+    guid: 9d12e90778c7210479bf4345b3dc781c
+  - enabled: 1
+    path: Assets/_Assets/__scenes/Level2.unity
+    guid: 691e0e76f8012ac46a4511f8d8e44e5e
+  - enabled: 1
+    path: Assets/_Assets/__scenes/Level3.unity
+    guid: b75071a5904cec24ea023c3c36128de2
+  - enabled: 0
+    path: Assets/_Assets/__scenes/test.unity
+    guid: ea7bf701dad23f8408d713d8c4999186
+  - enabled: 0
+    path: Assets/Keypad/Demo.unity
+    guid: b22e3d54b9d644efa9ba4bf9bf651a44
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 8180c38f2d4471c48bf93d50a179c12a,
       type: 2}

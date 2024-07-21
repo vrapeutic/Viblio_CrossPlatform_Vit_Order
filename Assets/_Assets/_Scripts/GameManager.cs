@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Tachyon;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public static event Action OnLevelBegin;
     public static event Action OnLevelEnd;
+    public static event Action OnCompleteDistractingTask;
     public bool currentlyPlaying = false;//While the level is currently playing or not
     public bool successed = false;
     AudioListener[] listeners;
@@ -17,7 +19,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] BoolValue isTestingMode;
     [SerializeField] BoolValue isStandalone;
     [SerializeField] GameEvent OnMenuAppear;
-    [SerializeField] IntVariable noOfBooks; 
     WaitForSeconds a1AndHalfSecond;
     Books books;
 
@@ -34,6 +35,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         //StatisticsJsonFile.Instance.data.attempt_start_time = System.DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss tt");
+        InvokationManager invokationManager = new InvokationManager(this, this.gameObject.name);
+        NetworkManager.InvokeClientMethod("EndSuccessfullyRPC", invokationManager);
+        NetworkManager.InvokeClientMethod("EndUnSuccessfullyRPC", invokationManager);
+        NetworkManager.InvokeClientMethod("BeginLevelRPC", invokationManager);
+        NetworkManager.InvokeClientMethod("TestRPC", invokationManager);
         levelManager = FindObjectOfType<LevelManager>().gameObject;
         books = FindObjectOfType<Books>();
         if (levelManager==null) Debug.Log("levelManager is null");
@@ -71,17 +77,22 @@ public class GameManager : MonoBehaviour
     {
         //Debug.Log("GameManager.BeginLevelIenum()");
         yield return new WaitForSeconds(2);
+        NetworkManager.InvokeServerMethod("BeginLevelRPC", this.gameObject.name);
+
+    }
+
+    public void BeginLevelRPC()
+    {
         UnMutesounds();
         //Debug.Log("GameManager.BeginLevelRPC()");
-        //try
-        //{
-        //    levelManager.GetComponent<ILevel>().BeginLevel();
-        //}
-        //catch
-        //{
-        //    Debug.Log("levelManager.GetComponent<ILevel>() is: " + levelManager.GetComponent<ILevel>());
-        //}
-        FireOnLevelBegin();
+        try
+        {
+            levelManager.GetComponent<ILevel>().BeginLevel();
+        }
+        catch
+        {
+            Debug.Log("levelManager.GetComponent<ILevel>() is: "+levelManager.GetComponent<ILevel>());
+        }
     }
 
     #region control attempt variables
@@ -93,9 +104,9 @@ public class GameManager : MonoBehaviour
     {
         yield return a1AndHalfSecond;
         if (Statistics.instance.level == 2) level2Controller.ControlBatteryBarsAndRobotStateDecode();
-        Debug.Log("**"+Statistics.instance.correctPutBooksNo+"**"+ noOfBooks.Value);
+        //Debug.Log(Statistics.instance.correctPutBooksNo);
 
-        if (Statistics.instance.correctPutBooksNo >= noOfBooks.Value)//end the experience
+        if (Statistics.instance.correctPutBooksNo >= Statistics.instance.totalBooks)//end the experience
         {
             EndSuccessfully();
         }
@@ -113,6 +124,11 @@ public class GameManager : MonoBehaviour
         books.MakeBooksInteractable();
     }
 
+    public void FireOnCompleteDistractingTask()
+    {
+        OnCompleteDistractingTask();
+    }
+
     public void FireOnLevelEnd()
     {
         OnLevelEnd();
@@ -128,18 +144,28 @@ public class GameManager : MonoBehaviour
         if (!currentlyPlaying) return;
         currentlyPlaying = false;
         //Debug.Log("EndSuccessfully");
+        NetworkManager.InvokeServerMethod("EndSuccessfullyRPC", this.gameObject.name);
+    }
+    public void EndSuccessfullyRPC()
+    {
+        //if (Statistics.instance.android && !currentlyPlaying) return;
+        //Debug.Log("EndSuccessfullyRPC");
         successed = true;
         StartCoroutine(End());
     }
 
     public void EndUnSuccessfully()//Ends when time out 
     {
-        Debug.Log("    public void EndUnSuccessfully()");
-        if ( !currentlyPlaying) return;
-        Debug.Log("        if ( !currentlyPlaying) return;");
+        if (Statistics.instance.android && !currentlyPlaying) return;
+        //Debug.Log("EndUnSuccessfully");
+        NetworkManager.InvokeServerMethod("EndUnSuccessfullyRPC", this.gameObject.name);
+        //Instantiate(Resources.Load("Success Canvas"), transform.position, Quaternion.identity, transform);
+    }
+    public void EndUnSuccessfullyRPC()
+    {
+        //Debug.Log("EndUnSuccessfullyRPC");
         successed = false;
         StartCoroutine(End());
-        //Instantiate(Resources.Load("Success Canvas"), transform.position, Quaternion.identity, transform);
     }
 
     IEnumerator End()
@@ -147,39 +173,42 @@ public class GameManager : MonoBehaviour
         currentlyPlaying = false;
         if (Statistics.instance.android)
         {
-            Debug.Log("I Will send attempt statistics");
+            //Debug.Log("I Will send attempt statistics");
             Statistics.instance.SendAttemptStatistics();
             Debug.Log("*before SessionController.instance.canLoadSessionCanvas=true;");
-            try
-            {
-                SessionController.instance.canLoadSessionCanvas=true;
-            }
-            catch (Exception)
-            {
-                Debug.Log("can`t find session controller");
-            }
+            SessionController.instance.canLoadSessionCanvas=true;
             Debug.Log("*before FireOnLevelEnd();");
             FireOnLevelEnd();
         }
-        //levelManager.GetComponent<ILevel>().EndLevel();
+        levelManager.GetComponent<ILevel>().EndLevel();
 
         if (successed)
         {
-            yield return new WaitForSeconds(1);
-
+            yield return new WaitForSeconds(10);
+            if (isStandalone.Value)
+            {
                 OnMenuAppear.Raise();
                 if (Statistics.instance.languageIndex == 0) Instantiate(Resources.Load("End Successfully Canvas Standalone"), transform.position, Quaternion.identity, transform).name = "End Successfully Screen Standalone";
                 else Instantiate(Resources.Load("End Successfully Canvas Standalone VIT"), transform.position, Quaternion.identity, transform).name = "End Successfully Screen Standalone";
+            }
+            else
+            {
+                if (Statistics.instance.languageIndex == 0) Instantiate(Resources.Load("End Successfully Canvas"), transform.position, Quaternion.identity, transform).name = "End Successfully Screen";
+                //else Instantiate(Resources.Load("End Successfully Canvas Standalone"), transform.position, Quaternion.identity, transform).name = "End Successfully Canvas Standalone VIT";
+            }
             yield return new WaitForSeconds(120);
             SceneManager.LoadSceneAsync("Main");
         }
         else
         {
             yield return new WaitForSeconds(3);
-
+            if (isStandalone.Value)
+            {
                 OnMenuAppear.Raise();
                 if (Statistics.instance.languageIndex == 0) Instantiate(Resources.Load("End UnSuccessfully Canvas Standalone"), transform.position, Quaternion.identity, transform).name = "End Successfully Screen Standalone";
                 else Instantiate(Resources.Load("End UnSuccessfully Canvas Standalone VIT"), transform.position, Quaternion.identity, transform).name = "End Successfully Screen Standalone";
+            }
+            else Instantiate(Resources.Load("End UnSuccessfully Canvas"), transform.position, Quaternion.identity, transform).name = "End Un Successfully Screen";
             yield return new WaitForSeconds(120);
             SceneManager.LoadSceneAsync("Main");
         }

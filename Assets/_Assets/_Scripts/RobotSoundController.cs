@@ -45,7 +45,6 @@ public class RobotSoundController : MonoBehaviour
     public void StopSound()
     {
         speaker.Stop();
-        speaker.clip= null;
     }
 
 }

@@ -11,21 +11,6 @@ public class RaycastController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ShowControllersWithRays();
-    }
-
-    private void OnEnable()
-    {
-        GameManager.OnLevelBegin += OnLevelStart;
-    }
-
-    private void OnDisable()
-    {
-        GameManager.OnLevelBegin -= OnLevelStart;
-    }
-
-    private void OnLevelStart()
-    {
         if (Statistics.instance.isWithRay) ShowControllersWithRays();
         else HideControllersWithRays();
     }

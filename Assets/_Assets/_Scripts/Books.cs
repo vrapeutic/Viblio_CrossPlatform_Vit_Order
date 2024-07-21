@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class Books : MonoBehaviour
 {
-    [SerializeField] IntVariable booksNo;
-    [SerializeField] GameObject[] books;
+    GameObject[] books;
     XRInteractionManager xr;
     public static Books instatnce;
     public List<float> bookshights;
@@ -17,10 +15,10 @@ public class Books : MonoBehaviour
         instatnce = this;
         bookshights = new List<float>();
         xr = FindObjectOfType<XRInteractionManager>();
+        books = new GameObject[transform.childCount];
         for (int i = 0; i < books.Length; i++)
         {
-            if (i < booksNo.Value) books[i] = transform.GetChild(i).gameObject;
-            else books[i].SetActive(false);
+            books[i] = transform.GetChild(i).gameObject;
         }
         //xr.allowHover.;
     }
@@ -48,19 +46,16 @@ public class Books : MonoBehaviour
         //}
         MakeBooksUnInteractableOnlevelEnd();
     }
-    public void MakeBooksUnInteractableAfterperiod()
-    {
-        StartCoroutine(MakeBooksUnInteractableAfterperiodIenum());
-    }
 
-    IEnumerator MakeBooksUnInteractableAfterperiodIenum()
+    private async void MakeBooksUnInteractableOnlevelEnd()
     {
-        yield return new WaitForSeconds(.3f);
-        MakeBooksUnInteractableOnlevelEnd();
-    }
+/**/ //        OVRGrabber[] grabbers = FindObjectsOfType<OVRGrabber>();
 
-     void MakeBooksUnInteractableOnlevelEnd()
-    {
+        /**/ //        foreach (OVRGrabber item in grabbers)
+             /**/ //        {
+                  /**/ //       item.ForceRelease();
+                    /**/ //   }
+
         if (Statistics.instance.android)
         {
             //await new WaitForSeconds(2f);
