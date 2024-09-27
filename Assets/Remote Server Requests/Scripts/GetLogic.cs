@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Stats;
-using Tachyon;
+using OldStats;
 using UnityEngine.SceneManagement;
 
 public class GetLogic : MonoBehaviour
@@ -13,10 +12,6 @@ public class GetLogic : MonoBehaviour
         JsonAPIS.instance.OnGetRequestSuccess += OnGetRequestSeccessFunc;
         JsonAPIS.instance.OnGetRequestFail += OnGetRequestFailFunc;
 
-        InvokationManager invokationManager = new InvokationManager(this, this.gameObject.name);
-        NetworkManager.InvokeClientMethod("LoadMainMenuRPC", invokationManager);
-        NetworkManager.InvokeClientMethod("GetRequestFailRPC", invokationManager);
-
 #if UNITY_ANDROID
         JsonAPIS.instance.GetRequest();
 #endif
@@ -26,13 +21,13 @@ public class GetLogic : MonoBehaviour
     {
         Debug.Log("OnGetRequestSeccessFunc");
         StatisticsJsonFile.Instance.data.session_start_time = System.DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss tt");
-        NetworkManager.InvokeServerMethod("LoadMainMenuRPC", this.gameObject.name);
+        LoadMainMenuRPC();
     }
 
     public void OnGetRequestFailFunc()
     {
         Debug.Log("OnGetRequestFailFunc");
-        NetworkManager.InvokeServerMethod("GetRequestFailRPC", this.gameObject.name);
+        GetRequestFailRPC();
     }
 
     public void LoadMainMenuRPC()

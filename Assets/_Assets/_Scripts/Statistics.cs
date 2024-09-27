@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Threading.Tasks;
 using System.Linq;
 using System;
-using Stats;
+using OldStats;
 
 public class Statistics : MonoBehaviour
 {
@@ -53,7 +53,7 @@ public class Statistics : MonoBehaviour
     float aas;
     private int distractiblityScore;
     public bool android=false;
-    CSVFirebaseFileWriter cSVFirebaseFileWriter;
+    //CSVFirebaseFileWriter cSVFirebaseFileWriter;
     #region Unity Call backs
     private void Awake()
     {
@@ -70,7 +70,7 @@ public class Statistics : MonoBehaviour
 
     private void Start()
     {
-        cSVFirebaseFileWriter = new CSVFirebaseFileWriter();
+       // cSVFirebaseFileWriter = new CSVFirebaseFileWriter();
     }
 
     #endregion
@@ -93,7 +93,7 @@ public class Statistics : MonoBehaviour
             SessionStats.Instance.data.average_book_put_height = Books.instatnce.bookshights.Average() * 100;
         }
         BackendSession.instance.SendStatsData();
-        cSVFirebaseFileWriter.SaveScvfile();
+        //cSVFirebaseFileWriter.SaveScvfile();
         StopSessionTimer();
         //Debug.Log(JsonUtility.ToJson(StatisticsJsonFile.Instance));
         //if (JsonAPIS.instance != null)

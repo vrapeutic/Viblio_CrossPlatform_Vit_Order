@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Tachyon;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,7 +15,6 @@ public class TestingPath : MonoBehaviour
     private IEnumerator LoadMainSceneInum()
     {
         yield return null;
-        NetworkManager.SetStandaloneValue(true);
         SceneManager.LoadSceneAsync(2);
     }
 }

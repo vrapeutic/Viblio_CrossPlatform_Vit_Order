@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Tachyon;
 using UnityEngine;
 
 public class Level1InstructionSounds : MonoBehaviour
@@ -15,8 +14,6 @@ public class Level1InstructionSounds : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokationManager invokationManager = new InvokationManager(this, this.gameObject.name);
-        NetworkManager.InvokeClientMethod("PlayInstructionRPC", invokationManager);
         speaker = FindObjectOfType<NPCSoundController>();
         waitedTime = new WaitForSeconds(25);
     }
@@ -73,7 +70,7 @@ public class Level1InstructionSounds : MonoBehaviour
             {
                 break;
             }
-            NetworkManager.InvokeServerMethod("PlayInstructionRPC", this.gameObject.name, 4);
+            PlayInstructionRPC(4);
         }
     }
 
@@ -97,7 +94,7 @@ public class Level1InstructionSounds : MonoBehaviour
             {
                 break;
             }
-            NetworkManager.InvokeServerMethod("PlayInstructionRPC", this.gameObject.name, 5);
+            PlayInstructionRPC( 5);
         }
     }
 

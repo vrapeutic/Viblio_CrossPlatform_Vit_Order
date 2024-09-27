@@ -11,4 +11,9 @@ public class StringVariable : ScriptableObject
     {
         hideFlags = HideFlags.DontUnloadUnusedAsset;
     }
+
+    public void SetValue(string value)
+    {
+        Value = value;
+    }
 }

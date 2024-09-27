@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Threading.Tasks;
-using Tachyon;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -21,13 +20,11 @@ public class Level3Controller : MonoBehaviour, ILevel
 
     private void Start()
     {
-        InvokationManager invokationManager = new InvokationManager(this, this.gameObject.name);
-        NetworkManager.InvokeClientMethod("CompleteDistractingTaskRPC", invokationManager);
         books = FindObjectOfType<Books>();
         level3Introanimations = GameObject.Find("Level3IntroAnimations");
         robot = FindObjectOfType<Robot>();
         robotSound =FindObjectOfType<RobotSoundController>();
-        level3RobotAnimations = GameObject.Find("Level3RobotAnimations");
+        level3RobotAnimations = GameObject.Find("RobotAnimations");
         rightHand = GameObject.FindGameObjectWithTag("RightHand").GetComponent<HandHider>();
         leftHand = GameObject.FindGameObjectWithTag("LeftHand").GetComponent<HandHider>();
         #region wait times
@@ -38,8 +35,7 @@ public class Level3Controller : MonoBehaviour, ILevel
 
     public void BeginLevel()
     {
-        if (!introLevelSkipped)
-            StartCoroutine(BeginLevel3());
+        //if (!introLevelSkipped) StartCoroutine(BeginLevel3());
     }
 
     IEnumerator BeginLevel3()
@@ -71,72 +67,7 @@ public class Level3Controller : MonoBehaviour, ILevel
         robot.Walk();
         yield return a3Seconds;//28
         robot.Idle();
-        BeginRobotDistracting();//BeginLevel3();
         GameManager.instance.FireOnLevelBegin();
-    }
-
-    async void BeginRobotDistracting()
-    {
-        robot.SetLevelIntroPosition(level3RobotAnimations.transform.GetChild(0));
-        robot.Idle();
-        robot.Walk();
-        level3RobotAnimations.GetComponent<Animator>().enabled = true;
-        await new WaitForSeconds(30);
-        if (!GameManager.instance.currentlyPlaying) return;
-        level3RobotAnimations.GetComponent<Animator>().enabled = false;
-        robot.Idle();
-        robot.DropDown();
-        books.MakeBooksUnInteractableWhileSelectingThem();
-        try
-        {
-            rightHand.ShowHand(false);
-            //Debug.Log("right hand should shown");
-            leftHand.ShowHand(false);
-            //Debug.Log("left hand should shown");
-
-        }
-        catch (System.Exception e)
-        {
-            Debug.Log(e);
-        }
-        robotSound.PlayLevel3Sound(6);//08Oops! I guess I need a little  help here
-        await a5Seconds;
-        robotSound.PlayLevel3Sound(7);//09Can you please touch my broken leg in the right place
-    }
-
-    public void CompleteDistractingTask()
-    {
-        NetworkManager.InvokeServerMethod("CompleteDistractingTaskRPC", this.gameObject.name);
-    }
-    public async void CompleteDistractingTaskRPC()
-    {
-        await CompleteDistractingTaskIenum();
-        robot.Walk();
-        level3RobotAnimations.GetComponent<Animator>().enabled = true;
-        books.MakeBooksInteractable();
-        BeginRobotDistracting();
-        try
-        {
-            if (rightHand.isShown) rightHand.ShowHand(false);
-            else rightHand.HideHand(false);
-            //Debug.Log("right hand should shown");
-            if (leftHand.isShown) leftHand.ShowHand(false);
-            else leftHand.HideHand(false);
-            //Debug.Log("left hand should shown");
-
-        }
-        catch (System.Exception e)
-        {
-            Debug.Log(e);
-        }
-    }
-
-    IEnumerator CompleteDistractingTaskIenum()
-    {
-        robot.RiseUp();
-        //robotSound.PlayLevel3Sound(9);
-        yield return a3Seconds;
-
     }
 
     
@@ -161,17 +92,6 @@ public class Level3Controller : MonoBehaviour, ILevel
 
     }
 
-
-    private void OnEnable()
-    {
-        //GameManager.instance.FireOnCompleteDistractingTask 
-        GameManager.OnCompleteDistractingTask += CompleteDistractingTask;
-    }
-
-    private void OnDisable()
-    {
-        GameManager.OnCompleteDistractingTask -= CompleteDistractingTask;
-    }
     public void SkipIntroLevel()
     {
         //Debug.Log("SkipIntroLevel");
@@ -184,7 +104,6 @@ public class Level3Controller : MonoBehaviour, ILevel
         //if (laser != null) laser.gameObject.SetActive(false);
         //Debug.Log(laser.gameObject.name);
         robot.Idle();
-        BeginRobotDistracting();
         GameManager.instance.FireOnLevelBegin();
         robotSound.StopSound();
         StopAllCoroutines();

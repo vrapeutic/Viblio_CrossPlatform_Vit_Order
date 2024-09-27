@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Stats
+namespace OldStats
 {
     [Serializable]
     public class GetRoomIDJson //for the server reply on get request

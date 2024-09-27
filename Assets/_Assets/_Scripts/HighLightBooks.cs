@@ -12,7 +12,7 @@ public class HighLightBooks : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        books = new GameObject[10];
+        books = new GameObject[5];
         for (int i = 0; i < books.Length; i++)
         {
             books[i] = transform.GetChild(i).gameObject;

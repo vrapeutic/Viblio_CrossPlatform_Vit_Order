@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Tachyon;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
@@ -28,12 +27,6 @@ public class DeskTopGrapable : MonoBehaviour
         rot = new Quaternion(0, 0, 0, 0);
         leftHandTrans = GameObject.FindGameObjectWithTag("LeftHand").transform;
         rightHandTrans = GameObject.FindGameObjectWithTag("RightHand").transform;
-
-        InvokationManager invokationManager = new InvokationManager(this, this.gameObject.name);
-        NetworkManager.InvokeClientMethod("GrabbedByRightHand", invokationManager);
-        NetworkManager.InvokeClientMethod("GrabbedByLeftHand", invokationManager);
-        NetworkManager.InvokeClientMethod("ReleasedRPC", invokationManager);
-        NetworkManager.InvokeClientMethod("AfterBookTransformSyncRPC", invokationManager);
     }
 
 
@@ -41,8 +34,8 @@ public class DeskTopGrapable : MonoBehaviour
     public void BookGraped()
     {
         //Debug.Log(gameObject.name + "BookGraped ");
-        if (xrGrabInteractable.IsSelectableBy(rightHandInteractor)) NetworkManager.InvokeServerMethod("GrabbedByRightHand", this.gameObject.name);   
-        else NetworkManager.InvokeServerMethod("GrabbedByLeftHand", this.gameObject.name);
+        if (xrGrabInteractable.IsSelectableBy(rightHandInteractor)) GrabbedByRightHand();
+        else GrabbedByLeftHand();
     }
 
     public void GrabbedByLeftHand()
@@ -70,12 +63,12 @@ public class DeskTopGrapable : MonoBehaviour
     public void BookReleased()
     {
         if (!Statistics.instance.android) return;
-        NetworkManager.InvokeServerMethod("ReleasedRPC", this.gameObject.name);
+        Released();
         StartCoroutine(AfterBookSync());
     }
-    public void ReleasedRPC()
+    public void Released()
     {
-        //Debug.Log("ReleasedRPC");
+        //Debug.Log("Released");
         if (Statistics.instance.android) return;
         rb.isKinematic = false;
         rb.useGravity = true;
@@ -86,7 +79,7 @@ public class DeskTopGrapable : MonoBehaviour
     {
         if (!Statistics.instance.android) yield break;
         yield return a7partSecond;
-        NetworkManager.InvokeServerMethod("AfterBookTransformSyncRPC", this.gameObject.name, transform.position.x, transform.position.y, transform.position.z, transform.rotation.x, transform.rotation.y, transform.rotation.z, transform.rotation.w);
+        AfterBookTransformSyncRPC( transform.position.x, transform.position.y, transform.position.z, transform.rotation.x, transform.rotation.y, transform.rotation.z, transform.rotation.w);
     }
 
     public void AfterBookTransformSyncRPC(float _x, float _y, float _z, float rx, float ry, float rz, float rw)

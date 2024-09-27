@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Tachyon;
 using UnityEngine;
 
 public class Battery : MonoBehaviour
@@ -20,8 +19,6 @@ public class Battery : MonoBehaviour
         {
             batteryBars[i] = transform.GetChild(i).gameObject;
         }
-        InvokationManager invokationManager = new InvokationManager(this, this.gameObject.name);
-        NetworkManager.InvokeClientMethod("ControlBatteryBarsAndRobotStateRPC", invokationManager);
     }
    
 

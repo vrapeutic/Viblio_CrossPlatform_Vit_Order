@@ -1,17 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Tachyon;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 public class BookPosition : MonoBehaviour
 {
     [SerializeField] string bookTag;//the tag that entered book must have
+    [SerializeField] string instantiatedBookName="";
     [SerializeField] bool reservedPos;//position will not be available if true
     static int num = 0;
     bool positionOccupied = false;
     bool bookEntered = false;
     WaitForSeconds a5PartSeconds;
-    WaitForSeconds a2PartSeconds;
+    WaitForSeconds a1PartSeconds;
     WaitForSeconds a3PartSeconds;
     WaitForSeconds a2Seconds;
     WaitForSeconds a1second;
@@ -28,10 +28,8 @@ public class BookPosition : MonoBehaviour
         a2Seconds = new WaitForSeconds(2);
         a1second = new WaitForSeconds(1);
         a5PartSeconds = new WaitForSeconds(.5f);
-        a2PartSeconds = new WaitForSeconds(.2f);
+        a1PartSeconds = new WaitForSeconds(.1f);
         a3PartSeconds = new WaitForSeconds(.3f);
-        InvokationManager invokationManager = new InvokationManager(this, this.gameObject.name);
-        NetworkManager.InvokeClientMethod("ControlRewardsRPC", invokationManager);
         speaker = FindObjectOfType<NPCSoundController>();
         OnStart();
     }
@@ -46,10 +44,10 @@ public class BookPosition : MonoBehaviour
         else
         {
             ControlIndictors(2, false);
-            for (int i = 3; i < 7; i++)
-            {
-                transform.GetChild(i).transform.gameObject.SetActive(false);
-            }
+            //for (int i = 3; i < 7; i++)
+            //{
+            //    transform.GetChild(i).transform.gameObject.SetActive(false);
+            //}
         }
         if (!Statistics.instance.android) return;
 
@@ -60,9 +58,9 @@ public class BookPosition : MonoBehaviour
     //we can grab the ready books on the shelf
     public void StartWithInstaniateBooks()//int _num)
     {
-        if (bookTag == "BookYellow")Instantiate(Resources.Load("Books/Yellow Book"), transform.position, Quaternion.identity, transform).name = ("B" + gameObject.name);
-        else if (bookTag == "BookBlue") Instantiate(Resources.Load("Books/Blue Book"), transform.position, Quaternion.identity, transform).name = ("B" + gameObject.name);
-        else Instantiate(Resources.Load("Books/Red Book"), transform.position, Quaternion.identity, transform).name = ("B" + gameObject.name);
+        Instantiate(Resources.Load("Books/"+ instantiatedBookName), transform.position, Quaternion.identity, transform).name = ("B" + gameObject.name);
+        //else if (bookTag == "BookBlue") Instantiate(Resources.Load("Books/BookBlue"), transform.position, Quaternion.identity, transform).name = ("B" + gameObject.name);
+        //else Instantiate(Resources.Load("Books/BookRed"), transform.position, Quaternion.identity, transform).name = ("B" + gameObject.name);
         if (Statistics.instance.android) return;
         transform.GetComponentInChildren<Rigidbody>().isKinematic = true;
     }
@@ -78,18 +76,17 @@ public class BookPosition : MonoBehaviour
 
                 other.gameObject.tag = "PutBook";//if user release the book horizontally
                 positionOccupied = true;
- /**/ //               if (other.gameObject.GetComponent<OVRGrabbable>().grabbedBy != null) other.gameObject.GetComponent<OVRGrabbable>().grabbedBy.ForceRelease(other.gameObject.GetComponent<OVRGrabbable>());
                 other.gameObject.transform.position = transform.position;
                 other.gameObject.transform.rotation = transform.rotation;
                 other.GetComponent<Rigidbody>().isKinematic = true;
                 other.gameObject.GetComponent<BookTag>().newName = gameObject.name;
 
-                if (other.GetComponent<BookTag>().bookTag != bookTag)
-                {
-                    Statistics.instance.wrongTrials++;
-                    Statistics.instance.totalTrials++;
-                    //Debug.Log("TAR : Total no of trials : " + Statistics.instance.totalTrials);
-                }
+ //**//               //if (other.GetComponent<BookTag>().bookTag != bookTag)
+                //{
+                //    Statistics.instance.wrongTrials++;
+                //    Statistics.instance.totalTrials++;
+                //    //Debug.Log("TAR : Total no of trials : " + Statistics.instance.totalTrials);
+                //}
                 if (GameManager.instance.currentlyPlaying) Statistics.instance.StartResponseTimer();
             }
         }
@@ -98,13 +95,13 @@ public class BookPosition : MonoBehaviour
             bookEntered = true;
             if (other.gameObject.GetComponent<BookTag>().newName == gameObject.name)//my book puted 
             {
-                if (other.GetComponent<BookTag>().bookTag == bookTag)//Right attempt
-                {
+                //if (other.GetComponent<BookTag>().bookTag == bookTag)//Right attempt
+                //{
                     if (secondCheck)
                     {
                         Statistics.instance.correctPutBooksNo++;
                         Statistics.instance.totalTrials++;
- /**/                   other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                        other.gameObject.GetComponent<Rigidbody>().isKinematic = true;
                         try
                         {
                             if (other.gameObject.GetComponent<XRGrabInteractable>() != null && other.gameObject.GetComponent<XRGrabInteractable>().enabled)
@@ -117,11 +114,11 @@ public class BookPosition : MonoBehaviour
                         //Debug.Log("TAR : Total no of trials : " + Statistics.instance.totalTrials);
                     }
                     ControlIndictors(0, true);
-                }
-                else //Wrong attempt
-                {
-                    ControlIndictors(1, true);
-                }
+                //}
+//**//                //else //Wrong attempt
+                //{
+                //    ControlIndictors(1, true);
+                //}
             }
         }
 
@@ -143,7 +140,6 @@ public class BookPosition : MonoBehaviour
     }
 
     //2 empty pos //0 correct pos //1 wrongpos
-    //two copies from this function because I want visual reward not to delay because of server letancy
     void ControlIndictors(int target, bool server)
     {
         if (lastTarget == target) return;
@@ -152,7 +148,7 @@ public class BookPosition : MonoBehaviour
             if (i == target) transform.GetChild(i).transform.gameObject.SetActive(true);
             else transform.GetChild(i).transform.gameObject.SetActive(false);
         }
-        if (server) NetworkManager.InvokeServerMethod("ControlRewardsRPC", this.gameObject.name, target,Statistics.instance.correctPutBooksNo,Random.Range(0,2));
+        if (server) ControlRewardsRPC(target,Statistics.instance.correctPutBooksNo,Random.Range(0,2));
         lastTarget = target;
     }
     public void ControlRewardsRPC(int target, int booksNo, int clipNo)
@@ -188,9 +184,9 @@ public class BookPosition : MonoBehaviour
 
     async void RestCollidiersForInstanceTwice()
     {
-        StartCoroutine(RestCollidier(a2PartSeconds));
+        StartCoroutine(RestCollidier(a1PartSeconds));
         secondCheck = false;
-        await a3PartSeconds;
+        await a1PartSeconds;
         if (CanResetCorrectButvalue)
         {
             CanResetCorrectButvalue = false;
@@ -198,7 +194,7 @@ public class BookPosition : MonoBehaviour
         }
         secondCheck = true;
         bookEntered = false;
-        StartCoroutine(RestCollidier(a2PartSeconds));
+        StartCoroutine(RestCollidier(a1PartSeconds));
         CanResetCorrectButvalue = true;
         await a5PartSeconds;
         CheckEmpty();

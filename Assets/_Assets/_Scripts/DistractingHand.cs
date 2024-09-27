@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class DistractingHand : MonoBehaviour
 {
-
+    [SerializeField]GameEvent OnCompleteDistracting;
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "RightHand")
         {
-            GameManager.instance.FireOnCompleteDistractingTask();
+            OnCompleteDistracting.Raise();
             StartCoroutine(ResetCollidierForWhile());
         }
         
@@ -17,7 +17,7 @@ public class DistractingHand : MonoBehaviour
     IEnumerator ResetCollidierForWhile()
     {
         GetComponent<BoxCollider>().enabled = false;
-        yield return new WaitForSeconds(15);
+        yield return new WaitForSeconds(5);
         GetComponent<BoxCollider>().enabled = true;
     }
 }

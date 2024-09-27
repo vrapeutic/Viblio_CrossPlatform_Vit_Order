@@ -18,6 +18,7 @@ TagManager:
   - BookBlue
   - PutBook
   - Laser
+  - SelectiveDistractor
   layers:
   - Default
   - TransparentFX
