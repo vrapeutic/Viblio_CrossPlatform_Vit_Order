@@ -150,7 +150,7 @@ public class GameManager : MonoBehaviour
                 else Instantiate(Resources.Load("End UnSuccessfully Canvas Standalone VIT"), transform.position, Quaternion.identity, transform).name = "End Successfully Screen Standalone";
         }
         yield return new WaitForSeconds(5);
-        Application.Quit();
+        if(SceneManager.GetSceneByBuildIndex(0).name=="SystemLobby") Application.Quit();
 
     }
     #endregion

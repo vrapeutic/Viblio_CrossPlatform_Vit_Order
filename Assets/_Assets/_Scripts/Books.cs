@@ -29,10 +29,13 @@ public class Books : MonoBehaviour
     {
         for (int i = 0; i < books.Length; i++)
         {
-/**/ //            books[i].GetComponent<OVRGrabbable>().enabled = true;
-            books[i].GetComponent<Rigidbody>().useGravity = true;
-            books[i].GetComponent<BoxCollider>().enabled = true;
-            books[i].GetComponent<Rigidbody>().isKinematic = false;
+            /**/ //            books[i].GetComponent<OVRGrabbable>().enabled = true;
+            if (books[i].gameObject.tag != "PutBook")
+            {
+                books[i].GetComponent<Rigidbody>().useGravity = true;
+                books[i].GetComponent<BoxCollider>().enabled = true;
+                books[i].GetComponent<Rigidbody>().isKinematic = false;
+            }
         }
         xr.gameObject.SetActive(true);
     }
@@ -61,24 +64,16 @@ public class Books : MonoBehaviour
 
      void MakeBooksUnInteractableOnlevelEnd()
     {
-        if (Statistics.instance.android)
-        {
-            //await new WaitForSeconds(2f);
+        //await new WaitForSeconds(2f);
 
-            for (int i = 0; i < books.Length; i++)
+        for (int i = 0; i < books.Length; i++)
+        {
+            /**/ //                books[i].GetComponent<OVRGrabbable>().enabled = false;
+            if (books[i].gameObject.tag != "PutBook")
             {
-                /**/ //                books[i].GetComponent<OVRGrabbable>().enabled = false;
                 books[i].GetComponent<Rigidbody>().useGravity = false;
                 books[i].GetComponent<BoxCollider>().enabled = false;
                 books[i].GetComponent<Rigidbody>().isKinematic = true;
-            }
-        }
-
-        else
-        {
-            for (int i = 0; i < books.Length; i++)
-            {
-                books[i].transform.SetParent(null);
             }
         }
     }
