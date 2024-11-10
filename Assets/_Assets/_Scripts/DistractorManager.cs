@@ -16,6 +16,7 @@ public class DistractorManager : MonoBehaviour
     [SerializeField] GameEvent OnRobotDistracting;
     [SerializeField] GameEvent onShelfFallenDistracting;
     [SerializeField] GameEvent onVisitorsGreeting;
+    int lastRand = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +50,15 @@ public class DistractorManager : MonoBehaviour
 
     int RandomNember()
     {
+        if (noOfDistractors.Value == 1) return 1;
         int maxRange=noOfDistractors.Value+1;
-        return Random.Range(1, maxRange);
+        int rand= Random.Range(1, maxRange);
+        while (rand == lastRand)
+        {
+            rand = Random.Range(1, maxRange);
+        }
+        lastRand = rand;
+        return rand;
     }
+
 }

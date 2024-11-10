@@ -138,8 +138,9 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(1);
 
                 OnMenuAppear.Raise();
-                if (Statistics.instance.languageIndex == 0) Instantiate(Resources.Load("End Successfully Canvas Standalone"), transform.position, Quaternion.identity, transform).name = "End Successfully Screen Standalone";
-                else Instantiate(Resources.Load("End Successfully Canvas Standalone VIT"), transform.position, Quaternion.identity, transform).name = "End Successfully Screen Standalone";
+            Debug.Log("$$game Ended ="+Statistics.instance.languageIndex);
+            if (Statistics.instance.languageIndex == 0) Instantiate(Resources.Load("End Successfully Canvas Standalone"), transform.position, Quaternion.identity, transform).name = "End Successfully Screen Standalone";
+            else Instantiate(Resources.Load("End Successfully Canvas Standalone VIT"), transform.position, Quaternion.identity, transform).name = "End Successfully Screen Standalone";
         }
         else
         {

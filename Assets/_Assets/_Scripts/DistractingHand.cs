@@ -9,8 +9,8 @@ public class DistractingHand : MonoBehaviour
     {
         if (other.tag == "RightHand")
         {
-            OnCompleteDistracting.Raise();
             StartCoroutine(ResetCollidierForWhile());
+            OnCompleteDistracting.Raise();
         }
         
     }

@@ -79,10 +79,10 @@ public class Stats : MonoBehaviour
     public void WriteCSV()
     {
         collectedData += "Viblio" + ", " + level.Value + Environment.NewLine;
-        Debug.Log("!!!collectedData1 :" + collectedData);
+        //Debug.Log("!!!collectedData1 :" + collectedData);
         collectedData += "Target Starting Time" + ", " + "Target Hitting Time " + ", " + "Interruption Durations" + ", " +
             "Distractor Name          " + ", " + "Time Following It" + Environment.NewLine;
-        Debug.Log("!!!collectedData2 :" + collectedData);
+       // Debug.Log("!!!collectedData2 :" + collectedData);
         int arrLength = endingTimes.Count > DistractorsName.Count ? endingTimes.Count : DistractorsName.Count;
         Debug.Log("!!!arrLength: " + arrLength + " DistractorsName.Count " + DistractorsName.Count + " endingTimes.Count " + endingTimes.Count);
         for (int i = 0; i < arrLength; i++)
@@ -93,7 +93,7 @@ public class Stats : MonoBehaviour
             else if (i < endingTimes.Count) collectedData += startingTimes[i].ToString() + ", " + endingTimes[i].ToString() + ", " + interruptionDurations[i].ToString() + Environment.NewLine;
             else if (i < TimeFollowingDistractors.Count) collectedData += " , , , " + DistractorsName[i].ToFixedString(25, ' ') + ", " + TimeFollowingDistractors[i].ToString() + Environment.NewLine;
         }
-        Debug.Log("!!!collectedData3 :" + collectedData);
+        //Debug.Log("!!!collectedData3 :" + collectedData);
         CSVWriter csv = new CSVWriter();
         GetComponent<CSVWriter>().WriteCSV(collectedData, fileName.Value);
         Debug.Log("!!WriteCSV");

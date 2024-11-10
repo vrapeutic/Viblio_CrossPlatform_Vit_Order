@@ -76,7 +76,7 @@ public class BookPosition : MonoBehaviour
 
                 other.gameObject.tag = "PutBook";//if user release the book horizontally
                 positionOccupied = true;
-                other.gameObject.transform.position = transform.position;
+                other.gameObject.transform.position = new Vector3 (transform.position.x,transform.position.y - other.gameObject.GetComponent<BookTag>().localHightDiff,transform.position.z);
                 other.gameObject.transform.rotation = transform.rotation;
                 other.GetComponent<Rigidbody>().isKinematic = true;
                 other.gameObject.GetComponent<BookTag>().newName = gameObject.name;

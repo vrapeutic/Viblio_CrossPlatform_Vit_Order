@@ -23,8 +23,16 @@ public class CSVWriter:MonoBehaviour
         }
         path = CreateDirectory(GetDownloadFolder() + "/VRapeuticSessions/") + fileName + ".csv";
         Debug.Log(path);
+        try
+        {
         File.AppendAllText(path, CollectedStats);
         if (isReqToGenerateCSVFile) bridge.SendIntent(path);
+
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e.Message);
+        }
         // if bool is true BridgePluginInitializer.Instance.SendIntent(path);
         //StartCoroutine( WriteCSVIEnum(CollectedStats));
     }

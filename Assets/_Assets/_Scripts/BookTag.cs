@@ -8,6 +8,7 @@ public class BookTag : MonoBehaviour
     public string bookTag;
     [HideInInspector]
     public string newName;
+    public float localHightDiff = 0;
     bool canEndGrap= false; // to handle the case when book translated from book to another
     // Start is called before the first frame update
     void Start()
