@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Receiver : MonoBehaviour
 {
@@ -11,29 +12,39 @@ public class Receiver : MonoBehaviour
     int[] settings=new int[10];
     [SerializeField] StringVariable sesionId;
 
+    bool canEnterStartIntent = true;
+    bool canEnterCloseIntent = true;
+
 
     public void OnReceiveCloseApp(string messageFromNative)
     {
-        CloseAppClass closeAppInstant = JsonUtility.FromJson<CloseAppClass>(messageFromNative);
-        OnRecieveCloseApp.Raise();
-        //actionType.Value = closeAppInstant.action;
-        generateCSVFile.Value = closeAppInstant.generateCsvReport;
-        //Debug.Log($"Action is {bridgeDataModel.action} and GenerateCsvReport is {bridgeDataModel.generateCsvReport}");
-
+        if (canEnterCloseIntent && (SceneManager.GetActiveScene().name != "SystemLobby"))
+        {
+            canEnterCloseIntent = false;
+            CloseAppClass closeAppInstant = JsonUtility.FromJson<CloseAppClass>(messageFromNative);
+            OnRecieveCloseApp.Raise();
+            //actionType.Value = closeAppInstant.action;
+            generateCSVFile.Value = closeAppInstant.generateCsvReport;
+            //Debug.Log($"Action is {bridgeDataModel.action} and GenerateCsvReport is {bridgeDataModel.generateCsvReport}");
+        }
     }
 
     public void OnReceiveStartIntent(string messageFromNative)
     {
-        StartAppClass startAppInstant = JsonUtility.FromJson<StartAppClass>(messageFromNative);
-        OnRecieveStartApp.Raise();
-        settings = startAppInstant.settings;
-        sesionId.Value = startAppInstant.sessionId;
-        if (GetComponent<MappingChoices>() != null) GetComponent<MappingChoices>().Mapper(settings);
-        //Debug.Log($"Action is {bridgeDataModel.action} and GenerateCsvReport is {bridgeDataModel.generateCsvReport}");
-        for (int i = 0; i < 10; i++)
+        if (canEnterStartIntent && (SceneManager.GetActiveScene().name == "SystemLobby"))//SystemLobby
         {
-            Debug.Log("settings ["+i+"]="+settings[i]);
+            canEnterStartIntent = false;
+            StartAppClass startAppInstant = JsonUtility.FromJson<StartAppClass>(messageFromNative);
+            OnRecieveStartApp.Raise();
+            settings = startAppInstant.settings;
+            sesionId.Value = startAppInstant.sessionId;
+            if (GetComponent<MappingChoices>() != null) GetComponent<MappingChoices>().Mapper(settings);
+            //Debug.Log($"Action is {bridgeDataModel.action} and GenerateCsvReport is {bridgeDataModel.generateCsvReport}");
+            for (int i = 0; i < 10; i++)
+            {
+                Debug.Log("settings [" + i + "]=" + settings[i]);
+            }
+            Debug.Log("sesion id =" + sesionId.Value);
         }
-        Debug.Log("sesion id ="+ sesionId.Value);
     }
 }

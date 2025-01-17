@@ -83,7 +83,7 @@ public class Stats : MonoBehaviour
         collectedData += "Target Starting Time" + ", " + "Target Hitting Time " + ", " + "Interruption Durations" + ", " +
             "Distractor Name          " + ", " + "Time Following It" + Environment.NewLine;
        // Debug.Log("!!!collectedData2 :" + collectedData);
-        int arrLength = endingTimes.Count > DistractorsName.Count ? endingTimes.Count : DistractorsName.Count;
+        int arrLength = endingTimes.Count > TimeFollowingDistractors.Count ? endingTimes.Count : TimeFollowingDistractors.Count;
         Debug.Log("!!!arrLength: " + arrLength + " DistractorsName.Count " + DistractorsName.Count + " endingTimes.Count " + endingTimes.Count);
         for (int i = 0; i < arrLength; i++)
         {

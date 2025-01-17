@@ -1832,6 +1832,7 @@ MonoBehaviour:
   typeOfAttention: {fileID: 11400000, guid: 0c3194d968ae0a049af44be382ec0408, type: 2}
   sustainedValue: {fileID: 11400000, guid: b7f54d742d7ac0b488fed986c77cb577, type: 2}
   noOfDistractor: {fileID: 11400000, guid: 0f757bc747daece4390616687b63ff62, type: 2}
+  vitLanguage: {fileID: 11400000, guid: 9b9d6015fc52bf646a54110f62e2e586, type: 2}
 --- !u!114 &1754417229
 MonoBehaviour:
   m_ObjectHideFlags: 0

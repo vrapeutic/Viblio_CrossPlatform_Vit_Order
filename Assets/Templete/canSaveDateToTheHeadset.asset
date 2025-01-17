@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76e5a11926bc4a642b78c851d326360c, type: 3}
-  m_Name: TypeOfAttention
+  m_Script: {fileID: 11500000, guid: b4e703022b41d02428cdab1fe9d55b8a, type: 3}
+  m_Name: canSaveDateToTheHeadset
   m_EditorClassIdentifier: 
-  Value: sustained
+  Value: 1

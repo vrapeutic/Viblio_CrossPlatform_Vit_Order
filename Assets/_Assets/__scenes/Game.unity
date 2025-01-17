@@ -2095,6 +2095,7 @@ GameObject:
   - component: {fileID: 115207700}
   - component: {fileID: 115207702}
   - component: {fileID: 115207701}
+  - component: {fileID: 115207703}
   m_Layer: 0
   m_Name: Speaker annoncement Distractor
   m_TagString: Untagged
@@ -2133,8 +2134,8 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 115207702}
-        m_MethodName: Play
+      - m_Target: {fileID: 115207703}
+        m_MethodName: PlaySound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2241,6 +2242,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &115207703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115207699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6369025ed9b50a1418973dc16777b05e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vitLanguage: {fileID: 11400000, guid: 9b9d6015fc52bf646a54110f62e2e586, type: 2}
+  engAudioCliip: {fileID: 8300000, guid: 24b1afd92cb08d04aae20d184a5a812b, type: 3}
+  vitAudioCliip: {fileID: 8300000, guid: adafb086ce06a4c4b893d378aff92c64, type: 3}
 --- !u!1001 &117777902
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8327,6 +8343,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: fddc4ada40f99554bab2ac7ad514debb, type: 3}
   - {fileID: 8300000, guid: 46f03f4449667fd4abc280a457a62b92, type: 3}
   - {fileID: 8300000, guid: b9e14e022b820644ca05e35620c526d8, type: 3}
+  isVit: {fileID: 11400000, guid: 9b9d6015fc52bf646a54110f62e2e586, type: 2}
 --- !u!82 &528307180
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9684,6 +9701,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToWaitFirstInstruction: 15
+  vitLanguage: {fileID: 11400000, guid: 9b9d6015fc52bf646a54110f62e2e586, type: 2}
+  engAudioCliip: {fileID: 8300000, guid: 81ad5a2e17cb1f34e9738ec8844b1f0a, type: 3}
+  vitAudioCliip: {fileID: 8300000, guid: efe8cbf88c4c4f645bbec70fc0e0bdb6, type: 3}
 --- !u!1 &626669332
 GameObject:
   m_ObjectHideFlags: 0
@@ -16005,7 +16025,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 338c126002763554ab6857d9c64d3d47, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 0.4
+  m_Pitch: 0.9
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -17545,6 +17565,8 @@ MonoBehaviour:
   isReqToGenerateCSVFile: {fileID: 11400000, guid: a0232153268a0de4cb08a6d11df87561,
     type: 2}
   bridge: {fileID: 903797837}
+  canSavestatsToHeadset: {fileID: 11400000, guid: 038deb183de34df40a0be611962f2091,
+    type: 2}
 --- !u!1 &1122397608
 GameObject:
   m_ObjectHideFlags: 0
@@ -18534,6 +18556,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToWaitFirstInstruction: 12
+  vitLanguage: {fileID: 11400000, guid: 9b9d6015fc52bf646a54110f62e2e586, type: 2}
+  engAudioCliip: {fileID: 8300000, guid: c0eff2b5a67d64a41a721b3bc399a9c2, type: 3}
+  vitAudioCliip: {fileID: 8300000, guid: f252dc24e0e3700468da5add170f414c, type: 3}
 --- !u!1 &1202125451
 GameObject:
   m_ObjectHideFlags: 0
@@ -20065,6 +20090,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8ca6b60b809b6bd47ad648e5a28ed154, type: 3}
   - {fileID: 8300000, guid: 866c8227b5398d34baa79dec7ef6b403, type: 3}
   - {fileID: 8300000, guid: f17497ed3b504ae4b99f3a1904afb2c9, type: 3}
+  isVit: {fileID: 11400000, guid: 9b9d6015fc52bf646a54110f62e2e586, type: 2}
 --- !u!82 &1282965771
 AudioSource:
   m_ObjectHideFlags: 0
@@ -20331,6 +20357,7 @@ GameObject:
   - component: {fileID: 1311293909}
   - component: {fileID: 1311293908}
   - component: {fileID: 1311293911}
+  - component: {fileID: 1311293912}
   m_Layer: 0
   m_Name: Distractors
   m_TagString: Untagged
@@ -20517,6 +20544,37 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   timeToWait: 0
+--- !u!114 &1311293912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311293905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab9e7e5b885b08c4d9e015940fb1edf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Events:
+  - {fileID: 11400000, guid: 7877be025550fcb4ab3d449143d04897, type: 2}
+  - {fileID: 11400000, guid: d4bb5e2eec4f60e4aa265245557733fb, type: 2}
+  - {fileID: 11400000, guid: 3cdb20d9df06bd9408c50c661f2ad781, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: d395d988dfa581941a68e65ff9b96318, type: 2}
+        m_MethodName: Raise
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  timeToWait: 4
 --- !u!1 &1312642933
 GameObject:
   m_ObjectHideFlags: 0
@@ -21776,6 +21834,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToWaitFirstInstruction: 3
+  vitLanguage: {fileID: 11400000, guid: 9b9d6015fc52bf646a54110f62e2e586, type: 2}
+  engAudioCliip: {fileID: 8300000, guid: 11ea3d0d6f4066d45ac2377e8ac3c405, type: 3}
+  vitAudioCliip: {fileID: 8300000, guid: 46da07f3a6744664f90316cfd98e5d65, type: 3}
 --- !u!114 &1434980060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24087,6 +24148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToWaitFirstInstruction: 3
+  vitLanguage: {fileID: 11400000, guid: 9b9d6015fc52bf646a54110f62e2e586, type: 2}
+  engAudioCliip: {fileID: 8300000, guid: 7a21308436f3efd41893b04596defb6d, type: 3}
+  vitAudioCliip: {fileID: 8300000, guid: 02115cb16d8dcf84c87a430ed047ca4a, type: 3}
 --- !u!82 &1533498791
 AudioSource:
   m_ObjectHideFlags: 0
@@ -33445,6 +33509,7 @@ MonoBehaviour:
   OnEndUnSuccessfully: {fileID: 11400000, guid: 43ed37e53e9042d4d8f4a1c536a79ada,
     type: 2}
   noOfBooks: {fileID: 11400000, guid: b7f54d742d7ac0b488fed986c77cb577, type: 2}
+  vitLanguage: {fileID: 11400000, guid: 9b9d6015fc52bf646a54110f62e2e586, type: 2}
 --- !u!4 &2051714428
 Transform:
   m_ObjectHideFlags: 0
@@ -40775,6 +40840,31 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 30339a0e10047894badbfb9403e14bcc, type: 2}
+    - target: {fileID: 4732368616230156308, guid: c921955f41cc0c44aa348eb91d131878,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732368616230156308, guid: c921955f41cc0c44aa348eb91d131878,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732368616230156308, guid: c921955f41cc0c44aa348eb91d131878,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732368616230156308, guid: c921955f41cc0c44aa348eb91d131878,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732368616230156308, guid: c921955f41cc0c44aa348eb91d131878,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 4732368616230156309, guid: c921955f41cc0c44aa348eb91d131878,
         type: 3}
       propertyPath: m_IsActive

@@ -11,4 +11,10 @@ public class BoolValue : ScriptableObject
     {
         hideFlags = HideFlags.DontUnloadUnusedAsset;
     }
+
+    public void SetBool(bool value)
+    {
+        Value = value;
+    }
+
 }

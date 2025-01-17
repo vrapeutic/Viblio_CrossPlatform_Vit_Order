@@ -7729,6 +7729,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  timeToWait: 0
 --- !u!114 &4647007955284823508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7767,6 +7768,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  timeToWait: 0
 --- !u!1 &4647007955285023644
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class KeybadInput : MonoBehaviour
 {
     public string value = "";
     [SerializeField]Text vaueTxt;
     bool canInteract = true;
+    [SerializeField] StringVariable sessionID;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +35,9 @@ public class KeybadInput : MonoBehaviour
         if (!canInteract) return;
         canInteract = false;
         Debug.Log("OnOkPressed");
-        BackendSession.instance.SetPatient(value);
+        sessionID.Value = value;
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+
     }
 
     public void ResetCanInteract()

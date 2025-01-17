@@ -18,18 +18,17 @@ public class RobotSoundController : MonoBehaviour
     // Start is called before the first frame update
     AudioSource speaker;
 
-    bool isVit = false;
+    [SerializeField] BoolValue isVit;
     // Start is called before the first frame update
     void Start()
     {
-        if (Statistics.instance.languageIndex == 1) isVit = true;
         speaker = GetComponent<AudioSource>();
     }
 
     public void PlayLevel2Sound(int id)
     {
         if (speaker.isPlaying) return;
-        if (isVit) speaker.clip = Level2RobotEnd[id];
+        if (isVit.Value) speaker.clip = Level2RobotEnd[id];
         else speaker.clip = Level2RobotEndEng[id];
         speaker.Play();
     }
@@ -37,7 +36,7 @@ public class RobotSoundController : MonoBehaviour
     public void PlayLevel3Sound(int id)
     {
         if (speaker.isPlaying) return;
-        if(isVit) speaker.clip = Level3RobotIntroandEnd[id];
+        if(isVit.Value) speaker.clip = Level3RobotIntroandEnd[id];
         else speaker.clip = Level3RobotIntroandEndEng[id];
         speaker.Play();
     }

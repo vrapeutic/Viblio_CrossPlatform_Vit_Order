@@ -25,27 +25,39 @@ public class DistractorManager : MonoBehaviour
         else if (typeOfAttention.Value == "adaptive") AdaptiveAttention();
     }
 
-    async void SelectiveAttention()
+    public void SelectiveAttention()
     {
-        await new WaitForSeconds(20);
+        StartCoroutine(SelectiveAttentionIEnum());
+    }
+    IEnumerator SelectiveAttentionIEnum()
+    {
+        yield return new WaitForSeconds(30);
         while (GameManager.instance.currentlyPlaying)
         {
             int rand = RandomNember();
             if (rand == 1) onLibraryAnnoncementDistractor.Raise();
             else if (rand == 2) onVisitorsTalking.Raise();
             else if (rand == 3) onDoorDistractor.Raise();
-            await new WaitForSeconds(20);
+            yield return new WaitForSeconds(30);
         }
     }
 
-    public async void AdaptiveAttention()
+    public void AdaptiveAttention()
+    {
+        StartCoroutine(AdaptiveAttentionIEnum());
+    }
+
+    IEnumerator AdaptiveAttentionIEnum()
     {
         int rand = RandomNember();
-        Debug.Log("AdaptiveAttention"+rand);
-        await new WaitForSeconds(30);
-        if (rand == 1) OnRobotDistracting.Raise(); 
-        else if (rand == 2) onShelfFallenDistracting.Raise();
-        else if (rand == 3) onVisitorsGreeting.Raise();
+        //Debug.Log("AdaptiveAttention"+rand);
+        yield return new WaitForSeconds(30);
+        if (GameManager.instance.currentlyPlaying)
+        {
+            if (rand == 1) OnRobotDistracting.Raise();
+            else if (rand == 2) onShelfFallenDistracting.Raise();
+            else if (rand == 3) onVisitorsGreeting.Raise();
+        }
     }
 
     int RandomNember()
@@ -59,6 +71,11 @@ public class DistractorManager : MonoBehaviour
         }
         lastRand = rand;
         return rand;
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 
 }

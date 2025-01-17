@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameEvent OnEndSuccessfully;
     [SerializeField] GameEvent OnEndUnSuccessfully;
     [SerializeField] IntVariable noOfBooks; 
+    [SerializeField] BoolValue vitLanguage;
     WaitForSeconds a1AndHalfSecond;
     Books books;
     int lastCorrectAttempts = 0;
@@ -139,7 +140,7 @@ public class GameManager : MonoBehaviour
 
                 OnMenuAppear.Raise();
             Debug.Log("$$game Ended ="+Statistics.instance.languageIndex);
-            if (Statistics.instance.languageIndex == 0) Instantiate(Resources.Load("End Successfully Canvas Standalone"), transform.position, Quaternion.identity, transform).name = "End Successfully Screen Standalone";
+            if (!vitLanguage.Value) Instantiate(Resources.Load("End Successfully Canvas Standalone"), transform.position, Quaternion.identity, transform).name = "End Successfully Screen Standalone";
             else Instantiate(Resources.Load("End Successfully Canvas Standalone VIT"), transform.position, Quaternion.identity, transform).name = "End Successfully Screen Standalone";
         }
         else
@@ -147,14 +148,23 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(1);
 
                 OnMenuAppear.Raise();
-                if (Statistics.instance.languageIndex == 0) Instantiate(Resources.Load("End UnSuccessfully Canvas Standalone"), transform.position, Quaternion.identity, transform).name = "End Successfully Screen Standalone";
+                if (!vitLanguage.Value) Instantiate(Resources.Load("End UnSuccessfully Canvas Standalone"), transform.position, Quaternion.identity, transform).name = "End Successfully Screen Standalone";
                 else Instantiate(Resources.Load("End UnSuccessfully Canvas Standalone VIT"), transform.position, Quaternion.identity, transform).name = "End Successfully Screen Standalone";
         }
         yield return new WaitForSeconds(5);
-        if(SceneManager.GetSceneByBuildIndex(0).name=="SystemLobby") Application.Quit();
+        if (GetSceneName(0)=="SystemLobby") Application.Quit();
 
     }
     #endregion
+
+    string GetSceneName(int index)
+    {
+        string path = SceneUtility.GetScenePathByBuildIndex(index);
+        int slash = path.LastIndexOf('/');
+        string name = path.Substring(slash + 1);
+        int dot = name.LastIndexOf('.');
+        return name.Substring(0, dot);
+    }
 
     #region control sound
     void MuteSounds()

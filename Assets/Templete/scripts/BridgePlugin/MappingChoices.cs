@@ -10,6 +10,7 @@ public class MappingChoices : MonoBehaviour
     //choose environment
     [SerializeField] IntVariable sustainedValue;
     [SerializeField] IntVariable noOfDistractor;
+    [SerializeField] BoolValue vitLanguage;
 
     public void Mapper(int[] settings)
     {
@@ -24,6 +25,10 @@ public class MappingChoices : MonoBehaviour
         if (settings[3] == 1) noOfDistractor.Value = 1;
         else if (settings[3] == 2) noOfDistractor.Value = 2;
         else noOfDistractor.Value = 3;
+
+        if (settings[4] == 1) vitLanguage.Value = true;
+        else if (settings[4] == 2) vitLanguage.Value = false;
+
         StartCoroutine(LoadGameScene());
     }
 

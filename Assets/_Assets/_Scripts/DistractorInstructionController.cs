@@ -6,6 +6,9 @@ public class DistractorInstructionController : MonoBehaviour
 {
     bool canPlayInstruction = false;
     [SerializeField] float timeToWaitFirstInstruction ;
+    [SerializeField] BoolValue vitLanguage;
+    [SerializeField] AudioClip engAudioCliip;
+    [SerializeField] AudioClip vitAudioCliip;
     public void PlayInstruction()
     {
         canPlayInstruction = true;
@@ -18,7 +21,8 @@ public class DistractorInstructionController : MonoBehaviour
 
         while (canPlayInstruction)
         {
-            GetComponent<AudioSource>().Play();
+            if (vitLanguage.Value) GetComponent<AudioSource>().PlayOneShot(vitAudioCliip);
+            else GetComponent<AudioSource>().PlayOneShot(engAudioCliip);
             yield return new WaitForSeconds(15);
         }
     }
